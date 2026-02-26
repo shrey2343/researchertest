@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket Test</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Socket Connection Test</h1>
+    <div id="status">Checking...</div>
+    <div id="logs"></div>
+
+    <script>
+        const logs = document.getElementById('logs');
+        const status = document.getElementById('status');
+        
+        function log(msg) {
+            console.log(msg);
+            logs.innerHTML += `<p>${msg}</p>`;
+        }
+
+        // Get token from cookie
+        function getToken() {
+            const cookies = document.cookie.split(';');
+            const tokenCookie = cookies.find(c => c.trim().startsWith('token='));
+            if (tokenCookie) {
+                return tokenCookie.split('=')[1];
+            }
+            return null;
+        }
+
+        const token = getToken();
+        log('Token: ' + (token ? 'Found (' + token.substring(0, 20) + '...)' : 'NOT FOUND'));
+
+        if (!token) {
+            status.innerHTML = '❌ No token found. Please login first.';
+            status.style.color = 'red';
+        } else {
+            log('Connecting to: http://localhost:8000');
+            
+            const socket = io('http://localhost:8000', {
+                auth: { token },
+                transports: ['websocket', 'polling'],
+            });
+
+            socket.on('connect', () => {
+                log('✅ Connected! Socket ID: ' + socket.id);
+                status.innerHTML = '✅ Connected';
+                status.style.color = 'green';
+            });
+
+            socket.on('connect_error', (error) => {
+                log('❌ Connection Error: ' + error.message);
+                status.innerHTML = '❌ Connection Failed';
+                status.style.color = 'red';
+            });
+
+            socket.on('disconnect', (reason) => {
+                log('❌ Disconnected: ' + reason);
+                status.innerHTML = '❌ Disconnected';
+                status.style.color = 'red';
+            });
+
+            socket.on('user:online', (data) => {
+                log('🟢 User online: ' + data.userId);
+            });
+
+            socket.on('users:online', (data) => {
+                log('👥 Online users: ' + JSON.stringify(data.userIds));
+            });
+        }
+    </script>
+</body>
+</html>

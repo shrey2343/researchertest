@@ -1,0 +1,58 @@
+/* Dual Range Slider Styles */
+.dual-range-slider {
+  position: relative;
+  height: 24px;
+}
+
+.dual-range-slider input[type="range"] {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  pointer-events: none;
+  outline: none;
+}
+
+.dual-range-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  pointer-events: all;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dual-range-slider input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  pointer-events: all;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dual-range-slider .range-track {
+  position: absolute;
+  top: 8px;
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+.dual-range-slider .range-fill {
+  position: absolute;
+  top: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 4px;
+}
