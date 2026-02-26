@@ -316,7 +316,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-[3.3rem] leading-[1.1] xs:text-[3.85rem] sm:text-[4.4rem] md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-center md:text-left"
+                className="text-[2.5rem] leading-[1.1] xs:text-[2.8rem] sm:text-[3.5rem] md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-center md:text-left"
               >
                 <span className="block mb-1 sm:mb-1.5 md:mb-1.5">
                   <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
@@ -370,7 +370,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                     </motion.div>
                   </span>
                 </span>
-                <div className="mt-1 sm:mt-1.5 md:mt-1.5 min-h-[3.3rem] xs:min-h-[3.85rem] sm:min-h-[4.4rem] md:min-h-[2.75rem] lg:min-h-[3rem] xl:min-h-[3.5rem] flex items-center justify-center md:justify-start">
+                <div className="mt-1 sm:mt-1.5 md:mt-1.5 min-h-[2.5rem] xs:min-h-[2.8rem] sm:min-h-[3.5rem] md:min-h-[2.75rem] lg:min-h-[3rem] xl:min-h-[3.5rem] flex items-center justify-center md:justify-start">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={currentExpertType}
@@ -378,7 +378,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                       animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                       exit={{ opacity: 0, x: 50, filter: "blur(10px)" }}
                       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                      className="inline-block bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent font-black text-[3.3rem] xs:text-[3.85rem] sm:text-[4.4rem] md:text-3xl lg:text-4xl xl:text-5xl"
+                      className="inline-block bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent font-black text-[2.5rem] xs:text-[2.8rem] sm:text-[3.5rem] md:text-3xl lg:text-4xl xl:text-5xl"
                     >
                       {expertTypes[currentExpertType]}
                     </motion.span>
