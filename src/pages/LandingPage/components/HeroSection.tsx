@@ -1103,10 +1103,12 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                 className="text-[3.3rem] leading-[1.1] xs:text-[3.85rem] sm:text-[4.4rem] md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-center md:text-left"
               >
                 <span className="block mb-1 sm:mb-1.5 md:mb-1.5">
-                  <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">Get World's</span>
+                  <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent whitespace-nowrap">
+                    Get World's
+                  </span>
                 </span>
                 <span className="block mb-1 sm:mb-1.5 md:mb-1.5">
-                  <span className="relative inline-block">
+                  <span className="relative inline-block whitespace-nowrap">
                     <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
                       Best Experts
                     </span>
