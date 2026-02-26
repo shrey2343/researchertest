@@ -394,7 +394,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                 transition={{ delay: 0.5 }}
                 className="text-sm sm:text-base md:text-lg text-gray-700 font-semibold max-w-lg sm:max-w-xl mx-auto lg:mx-0 leading-relaxed"
               >
-                Get AI matched Experts for your exact needs
+                Get AI matched Experts for your exact needs,
               </motion.p>
 
               <motion.span
