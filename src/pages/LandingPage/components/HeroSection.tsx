@@ -122,6 +122,9 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
   const [isAutoRotating, setIsAutoRotating] = useState(true)
   const [isPlayingDemo, setIsPlayingDemo] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
+  
+  const expertTypes = ['Scientists', 'Researchers', 'Consultants']
+  const [currentExpertType, setCurrentExpertType] = useState(0)
 
   // Auto rotate images
   useEffect(() => {
@@ -133,6 +136,15 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
     )
     return () => clearInterval(interval)
   }, [isAutoRotating])
+
+  // Auto rotate expert types
+  useEffect(() => {
+    const interval = setInterval(
+      () => setCurrentExpertType((i) => (i + 1) % expertTypes.length),
+      3000
+    )
+    return () => clearInterval(interval)
+  }, [])
 
   // Filter skills based on search
   useEffect(() => {
@@ -299,37 +311,108 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
             </motion.div>
 
             {/* Main Headline */}
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-0.5 sm:space-y-1 md:space-y-1.5 w-full pt-0">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight sm:leading-tight"
+                className="text-[3.3rem] leading-[1.1] xs:text-[3.85rem] sm:text-[4.4rem] md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-center md:text-left"
               >
-                Get the Perfect{' '}
-                <span className="relative inline-block">
-                  <span className="relative z-10">Verified</span>
-                  <motion.div
-                  />
-                </span>{' '}
-                Researcher
-                <br />
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  AI-Matched to Your Project
+                <span className="block mb-1 sm:mb-1.5 md:mb-1.5">
+                  <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                    Get World's
+                  </span>
                 </span>
+                <span className="block mb-1 sm:mb-1.5 md:mb-1.5">
+                  <span className="relative inline-block">
+                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                      Best Experts
+                    </span>
+                    <motion.div
+                      className="absolute -bottom-1 sm:-bottom-1.5 md:-bottom-2 left-0 right-0 h-0.5 sm:h-1 md:h-1.5 rounded-full overflow-hidden"
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      animate={{ scaleX: 1, opacity: 1 }}
+                      transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+                    >
+                      <motion.div
+                        className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                        animate={{
+                          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                          scale: [1, 1.05, 1]
+                        }}
+                        transition={{
+                          backgroundPosition: {
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "linear"
+                          },
+                          scale: {
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }
+                        }}
+                        style={{ backgroundSize: '200% 200%' }}
+                      />
+                      <motion.div
+                        className="absolute inset-0 bg-white"
+                        animate={{
+                          x: ['-100%', '200%']
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatDelay: 1,
+                          ease: "easeInOut"
+                        }}
+                        style={{ width: '30%', opacity: 0.4 }}
+                      />
+                    </motion.div>
+                  </span>
+                </span>
+                <div className="mt-1 sm:mt-1.5 md:mt-1.5 min-h-[3.3rem] xs:min-h-[3.85rem] sm:min-h-[4.4rem] md:min-h-[2.75rem] lg:min-h-[3rem] xl:min-h-[3.5rem] flex items-center justify-center md:justify-start">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentExpertType}
+                      initial={{ opacity: 0, x: -50, filter: "blur(10px)" }}
+                      animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, x: 50, filter: "blur(10px)" }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                      className="inline-block bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent font-black text-[3.3rem] xs:text-[3.85rem] sm:text-[4.4rem] md:text-3xl lg:text-4xl xl:text-5xl"
+                    >
+                      {expertTypes[currentExpertType]}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
               </motion.h1>
+            </div>
 
+            <div className="space-y-3 sm:space-y-4">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-sm sm:text-base md:text-lg text-gray-600 max-w-lg sm:max-w-xl mx-auto lg:mx-0 leading-relaxed"
+                className="text-sm sm:text-base md:text-lg text-gray-700 font-semibold max-w-lg sm:max-w-xl mx-auto lg:mx-0 leading-relaxed"
               >
-                Get the right expert ,support,matched by Ai for your exact project needs.
-                <span className="block mt-1 sm:mt-2 text-blue-700 font-medium">
-                  Our AI, matches projects with perfect expertise instantly.
-                </span>
+                Get AI matched Experts for your exact needs
               </motion.p>
+
+              <motion.span
+                className="font-black text-[1.65rem] xs:text-[2rem] sm:text-[2.5rem] md:text-lg lg:text-xl xl:text-2xl block"
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%)",
+                  backgroundSize: "200% 200%",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text"
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              >
+                0% commission
+              </motion.span>
             </div>
 
 
@@ -455,13 +538,13 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
-              className="flex flex-col sm:flex-row items-center gap-3 pt-4 justify-center lg:justify-start flex-wrap"
+              className="flex flex-row sm:flex-row items-center gap-3 pt-4 justify-center lg:justify-start flex-wrap"
             >
               <motion.button
                 whileHover={{ y: -3, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => onNavigate('signup')}
-                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 font-semibold text-white shadow-xl text-sm sm:text-base"
+                className="flex-1 max-w-[200px] px-5.5 xs:px-6.5 sm:px-6 md:px-8 py-4 xs:py-4 sm:py-3 md:py-3.5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white rounded-xl sm:rounded-2xl font-bold transition-all shadow-2xl shadow-purple-500/50 hover:shadow-purple-500/80 text-[0.95rem] xs:text-[1.1rem] sm:text-sm md:text-base whitespace-nowrap"
               >
                 Join as Expert
               </motion.button>
@@ -470,7 +553,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                 whileHover={{ y: -3, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => window.location.href = '/post-project'}
-                className="group relative overflow-hidden rounded-full border-2 border-blue-600 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 font-semibold text-blue-600 bg-white hover:bg-blue-50 text-sm sm:text-base"
+                className="flex-1 max-w-[200px] px-5.5 xs:px-6.5 sm:px-6 md:px-8 py-4 xs:py-4 sm:py-3 md:py-3.5 bg-white border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white rounded-xl sm:rounded-2xl font-bold transition-all shadow-xl text-[0.95rem] xs:text-[1.1rem] sm:text-sm md:text-base whitespace-nowrap"
               >
                 Post a Project
               </motion.button>
@@ -782,4 +865,3 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
     </section>
   )
 }
-
