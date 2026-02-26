@@ -1371,16 +1371,16 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
               </div>
 
               {/* Trending Searches */}
-              <div className="mt-1.5 sm:mt-2 md:mt-2.5 flex flex-wrap gap-3.5 sm:gap-2 justify-center md:justify-start items-center">
-                <span className="text-[1.1rem] sm:text-xs md:text-xs text-gray-500 flex items-center gap-1 sm:gap-1">
-                  <TrendingUp size={24} className="sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" /> Trending:
+              <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 justify-center lg:justify-start items-center">
+                <span className="text-xs text-gray-500 flex items-center gap-1">
+                  <TrendingUp size={16} className="sm:w-4 sm:h-4" /> Trending:
                 </span>
                 {trendingSearches.map((search, index) => (
                   <motion.button
                     key={index}
                     whileHover={{ scale: 1.05 }}
                     onClick={() => handleSkillSelect(search)}
-                    className="text-[1.1rem] sm:text-xs bg-blue-50 text-blue-700 px-4.5 sm:px-2.5 md:px-3 py-2.5 sm:py-1.5 rounded-full hover:bg-blue-100 transition-colors whitespace-nowrap font-medium"
+                    className="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full hover:bg-blue-100 transition-colors whitespace-nowrap"
                   >
                     {search}
                   </motion.button>
