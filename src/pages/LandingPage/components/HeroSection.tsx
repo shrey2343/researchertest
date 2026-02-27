@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -319,13 +320,13 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                 className="text-[2rem] leading-[1.1] xs:text-[2.3rem] sm:text-[2.8rem] md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-center md:text-left"
               >
                 <span className="block mb-1 sm:mb-1.5 md:mb-1.5">
-                  <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent text-[2.2rem] xs:text-[2.5rem] sm:text-[3rem] md:text-5xl lg:text-6xl xl:text-7xl">
                     Get World's
                   </span>
                 </span>
                 <span className="block mb-1 sm:mb-1.5 md:mb-1.5">
                   <span className="relative inline-block">
-                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto] text-[2.2rem] xs:text-[2.5rem] sm:text-[3rem] md:text-5xl lg:text-6xl xl:text-7xl">
                       Best Experts
                     </span>
                     <motion.div
@@ -394,7 +395,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                 transition={{ delay: 0.5 }}
                 className="text-sm sm:text-base md:text-lg text-gray-700 font-semibold max-w-lg sm:max-w-xl mx-auto lg:mx-0 leading-relaxed"
               >
-                Get AI matched Experts for your exact needs,
+                Get AI matched Experts for your exact needs
               </motion.p>
 
               <motion.span
@@ -431,14 +432,39 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setShowDropdown(true)}
-                    // placeholder="      What do you need...?"
+                    placeholder="What do you need...?"
                     className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-4 pl-10 sm:pl-12 md:pl-14 pr-24 sm:pr-28 md:pr-32 text-sm sm:text-base text-gray-700 bg-white/95 backdrop-blur-sm border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-3 focus:ring-blue-500/30 focus:border-blue-500 shadow-xl hover:shadow-2xl transition-all duration-300 placeholder-gray-400"
                   />
                   <Search className="absolute left-3 sm:left-4 md:left-5 top-1/2 transform -translate-y-1/2 text-blue-500" size={18} />
 
-                  {/* AI Assistant Badge */}
-                  <div className="absolute right-20 sm:right-24 md:right-28 top-1/2 transform -translate-y-1/2 hidden sm:flex items-center gap-1 text-xs text-blue-600 font-medium">
-                    <Zap className="w-3 h-3" />
+                  {/* AI Assistant Badge with Pulsing Green Dot */}
+                  <div className="absolute right-20 sm:right-24 md:right-28 top-1/2 transform -translate-y-1/2 hidden sm:flex items-center gap-1.5 text-xs text-blue-600 font-medium">
+                    <div className="relative">
+                      <motion.div
+                        className="w-2 h-2 bg-green-500 rounded-full"
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [1, 0.7, 1]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                      <motion.div
+                        className="absolute inset-0 w-2 h-2 bg-green-400 rounded-full"
+                        animate={{
+                          scale: [1, 2, 1],
+                          opacity: [0.5, 0, 0.5]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    </div>
                     <span>AI Match</span>
                   </div>
 
@@ -584,24 +610,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
           >
             {/* Main Container */}
             <div className="relative flex items-start gap-8">
-              {/* Navigation Arrows */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={prevImage}
-                className="absolute -left-6 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-xl border border-gray-200 flex items-center justify-center hover:bg-white transition-colors"
-              >
-                <ChevronLeft className="w-6 h-6 text-gray-700" />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={nextImage}
-                className="absolute -right-6 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-xl border border-gray-200 flex items-center justify-center hover:bg-white transition-colors"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-700" />
-              </motion.button>
+              
 
               {/* Large Profile Image */}
               <AnimatePresence mode="wait">
@@ -622,10 +631,6 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                       initial={{ scale: 1.1 }}
                       animate={{ scale: 1 }}
                       transition={{ duration: 0.8 }}
-                      style={{
-                        maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
-                        WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
-                      }}
                     />
 
                     {/* Premium Badges */}
@@ -793,13 +798,12 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                         <div className={`w-2 h-2 rounded-full ${index === 0 || index === 2 ? 'bg-green-500' : 'bg-amber-500'} animate-pulse`} />
                       </div>
 
-                      <div className="relative h-28 overflow-hidden">
+                      <div className="relative h-44 overflow-hidden">
                         <img
                           src={researcher.src}
                           alt={researcher.name}
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                       </div>
 
                       <div className="p-2.5">
