@@ -521,7 +521,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
 
                       {/* Scrollable Content with increased height */}
                       <div 
-                        className="overflow-visible"
+                        className="overflow-y-auto"
                         style={{
                           maxHeight: '260px',
                           scrollbarWidth: 'thin',
