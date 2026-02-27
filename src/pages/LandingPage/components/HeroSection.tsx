@@ -204,7 +204,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
   }
 
   return (
-    <section className="relative py-6 sm:py-10 lg:py-14" style={{ overflow: 'hidden' }}>
+    <section className="relative py-6 sm:py-10 lg:py-14" style={{ overflow: 'visible' }}>
       {/* Ultra Cool 3D Animated Background */}
       <AnimatedBackground />
 
