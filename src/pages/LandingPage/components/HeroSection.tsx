@@ -204,7 +204,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
   }
 
   return (
-    <section className="relative py-6 sm:py-10 lg:py-14" style={{ overflow: 'visible' }}>
+    <section className="relative py-6 sm:py-10 lg:py-14" style={{ overflow: 'hidden' }}>
       {/* Ultra Cool 3D Animated Background */}
       <AnimatedBackground />
 
@@ -512,7 +512,7 @@ export default function HeroSection({ onNavigate, onShowResults }: HeroSectionPr
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 right-0 mt-3 bg-white border border-gray-200 rounded-2xl shadow-2xl z-50 overflow-hidden"
+                      className="absolute top-full left-0 right-0 mt-3 bg-white border border-gray-200 rounded-2xl shadow-2xl z-50 overflow-visible"
                     >
                       {/* Sticky Header */}
                       <div className="text-xs font-semibold text-gray-500 px-3 py-3 bg-gradient-to-b from-white to-gray-50 border-b border-gray-200">
